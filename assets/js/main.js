@@ -1,5 +1,6 @@
-function meuEscopo() {
-  
-}
 
-meuEscopo();
+(function(){
+
+    
+
+})();
