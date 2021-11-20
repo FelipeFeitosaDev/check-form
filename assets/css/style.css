@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&display=swap');
+
+:root {
+  --bg-color-primary: #44475A;
+  --bg-color-secondary: #282A36;
+  --txt-color:#F8F8F2;
+  --btn-color-primary:#50FA7B;
+  --btn-color-secondary: #FF79C6;  
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color-primary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.container {
+  max-width: 640px;
+  margin: 50px auto;
+  background: var(--bg-color-secondary);
+  padding: 20px;
+  border-radius: 10px;
+}
