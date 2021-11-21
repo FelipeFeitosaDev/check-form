@@ -15,10 +15,6 @@
             })
         }
 
-        checkPasswords(){
-
-        }
-
         checkFields(){
             let flag = true;
 
@@ -75,7 +71,7 @@
             return valid;
           }
         
-          validId(field){
+        validId(field){
               const id = new ValidaCPF(field.value);
               return id.valida()
           }
