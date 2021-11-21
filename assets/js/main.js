@@ -38,7 +38,7 @@
                 }
 
                 if(field.classList.contains('name')){
-                   
+                   if(!field.value.match(/^[a-zA-Z]+$/g)) flag = false
                 }
                 if(field.classList.contains('user')){
                     if(!this.validUser(field)) flag = false
@@ -84,7 +84,23 @@
             field.insertAdjacentElement('afterend', div);
 
         }
+        validPassword(pass, confirmPass){
+            if(pass.value.length < 3 || pass.value.length.length > 12) {
+                this.displayError(pass, 'Usuário precisa ter entre 3 e 12 caracteres.');
+                return false;
+              }
 
+            if(!pass.value.match(/^[a-zA-Z0-9]+$/g)){
+                let msg = `'O campo precisar conter apenas letras e/ou números.'`
+                this.displayError(pass, msg);
+                return false
+
+            }
+            if(pass !== confirmPass) return false
+
+            return true
+           
+        }
 
     }
     const form = new Form();
