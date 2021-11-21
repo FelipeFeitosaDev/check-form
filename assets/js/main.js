@@ -34,14 +34,51 @@
             
             for(let field of fields){
                 if(field.value === ''){
+                    flag = false;
                     const label = field.previousElementSibling.textContent;
                     const msg = `Preencha o campo ${label}`;
                     console.log(label)
                     this.displayError(field, msg);
                 }
+
+                if(field.classList.contains('name')){
+                   
+                }
+                if(field.classList.contains('user')){
+                    if(!this.validUser(field)) flag = false
+                }
+
+                if(field.classList.contains('id')){
+                    if(!this.validId(field)) flag = false;
+
+                }
             }
+            return flag;
         }
 
+        validUser(field) {
+            let valid = true;//flag
+            const user = field.value;
+            
+        
+            if(user.length < 3 || user.length > 12) {
+              this.displayError(field, 'Usuário precisa ter entre 3 e 12 caracteres.');
+              valid = false;
+            }
+        
+        
+            if(!user.match(/^[a-zA-Z0-9]+$/g)) {
+              this.displayError(field, 'Nome de usuário precisar conter apenas letras e/ou números.');
+              valid = false;
+            }
+        
+            return valid;
+          }
+        
+          validId(field){
+              const id = new ValidaCPF(field.value);
+              return id.valida()
+          }
         displayError(field,msg){
             const div = document.createElement('div');
             div.innerHTML = msg;
