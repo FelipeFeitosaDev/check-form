@@ -123,11 +123,11 @@
         flag = false;
         this.displayError(
           pass,
-          "Campos senha e repetir senha precisar ser iguais."
+          "Campos senha e confirmar senha precisam ser iguais."
         );
         this.displayError(
           confirmPass,
-          "Campos senha e repetir senha precisar ser iguais."
+          "Campos senha e confirmar senha precisam ser iguais."
         );
       } 
       return flag;
