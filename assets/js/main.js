@@ -42,31 +42,28 @@
           this.displayError(field, msg);
         } else if (field.classList.contains("name")) {
           if (!this.checkName(field)) flag = false;
-
         } else if (field.classList.contains("user")) {
           if (!this.checkUser(field)) flag = false;
-
         } else if (field.classList.contains("id")) {
           if (!this.checkId(field)) flag = false;
           this.displayError(field, "CPF inválido");
-        } 
+        }
       }
       return flag;
     }
 
-    checkName(field){
-        let flag = true;
-        if (!field.value.match(/^[\sa-zA-Z]+$/g)) {
-            this.displayError(field, 'Não pode haver caracteres especiais')
-            flag = false;
-        }
-        if(!field.value.includes(' ')){
-            this.displayError(field,'Precisa ter um sobrenome');
-            flag = false
-        }
+    checkName(field) {
+      let flag = true;
+      if (!field.value.match(/^[\sa-zA-Z]+$/g)) {
+        this.displayError(field, "Não pode haver caracteres especiais");
+        flag = false;
+      }
+      if (!field.value.includes(" ")) {
+        this.displayError(field, "Precisa ter um sobrenome");
+        flag = false;
+      }
 
-        return flag
-
+      return flag;
     }
     checkUser(field) {
       let valid = true; //flag
