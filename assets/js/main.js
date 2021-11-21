@@ -6,12 +6,19 @@
             this.form = document.querySelector('form');
         }
 
-        submit(){
+        submitListener(){
             this.form.addEventListener('submit', e => {
                 e.preventDefault();
               //se senha os campos forem válidos, submeter form
                const validField = this.checkFields();
-                //const validPassword;
+               const validPassword = this.checkPass();
+
+               if(validField && validPassword){
+                alert('Formulário enviado.');
+      
+                //controla quando usuário será enviado
+                this.form.submit();
+               }
             })
         }
 
@@ -35,16 +42,17 @@
                     const msg = `Preencha o campo ${label}`;
                     console.log(label)
                     this.displayError(field, msg);
-                }
-
-                if(field.classList.contains('name')){
+                }else if(field.classList.contains('name')){
+                    if(!field.value.match(/^[a-zA-Z]+$/g)) flag = false
+                 }else if(field.classList.contains('user')){
+                     if(!this.validUser(field)) flag = false
+                 }else if(field.classList.contains('id')){
+                     if(!this.validId(field)) flag = false;
+                 }else if(field.classList.contains('name')){
                    if(!field.value.match(/^[a-zA-Z]+$/g)) flag = false
-                }
-                if(field.classList.contains('user')){
+                }else if(field.classList.contains('user')){
                     if(!this.validUser(field)) flag = false
-                }
-
-                if(field.classList.contains('id')){
+                }else if(field.classList.contains('id')){
                     if(!this.validId(field)) flag = false;
 
                 }
@@ -60,13 +68,13 @@
             if(user.length < 3 || user.length > 12) {
               this.displayError(field, 'Usuário precisa ter entre 3 e 12 caracteres.');
               valid = false;
-            }
+            }else if(!user.match(/^[a-zA-Z0-9]+$/g)) {
+                this.displayError(field, 'Nome de usuário precisar conter apenas letras e/ou números.');
+                valid = false;
+              }
         
         
-            if(!user.match(/^[a-zA-Z0-9]+$/g)) {
-              this.displayError(field, 'Nome de usuário precisar conter apenas letras e/ou números.');
-              valid = false;
-            }
+            
         
             return valid;
           }
@@ -84,26 +92,34 @@
             field.insertAdjacentElement('afterend', div);
 
         }
-        validPassword(pass, confirmPass){
+        checkPass(){
+            const pass = this.form.querySelector('.password');
+            const confirmPass = this.form.querySelector('.confirm-password');
+            let flag = true
+            
+            if(pass.value !== confirmPass.value) {
+                flag = false;
+                this.displayError(pass, 'Campos senha e repetir senha precisar ser iguais.');
+                this.displayError(confirmPass, 'Campos senha e repetir senha precisar ser iguais.');
+              }
+
             if(pass.value.length < 3 || pass.value.length.length > 12) {
-                this.displayError(pass, 'Usuário precisa ter entre 3 e 12 caracteres.');
-                return false;
+                this.displayError(pass, 'O campo senha precisa ter entre 3 e 12 caracteres.');
+                flag = false;;
               }
 
             if(!pass.value.match(/^[a-zA-Z0-9]+$/g)){
-                let msg = `'O campo precisar conter apenas letras e/ou números.'`
+                let msg = `'O campo senha precisar conter apenas letras e/ou números.'`
                 this.displayError(pass, msg);
-                return false
+                flag = false;
 
             }
-            if(pass !== confirmPass) return false
-
-            return true
+            return flag
            
         }
 
     }
     const form = new Form();
-    form.submit();
+    form.submitListener();
 
 })();
