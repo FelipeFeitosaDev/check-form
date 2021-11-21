@@ -103,7 +103,23 @@
       const confirmPass = this.form.querySelector(".confirm-password");
       let flag = true;
 
-      if (pass.value !== confirmPass.value) {
+      if(pass.value !== ''){
+
+          if (pass.value.length < 3 || pass.value.length.length > 12 ) {
+            this.displayError(
+              pass,
+              "O campo senha precisa ter entre 3 e 12 caracteres."
+            );
+            flag = false;
+          } 
+          if (!pass.value.match(/^[a-zA-Z0-9]+$/g)) {
+            let msg = `'O campo senha precisar conter apenas letras e/ou números.'`;
+            this.displayError(pass, msg);
+            flag = false;
+          }
+      }
+      
+     if (pass.value !== confirmPass.value) {
         flag = false;
         this.displayError(
           pass,
@@ -113,21 +129,7 @@
           confirmPass,
           "Campos senha e repetir senha precisar ser iguais."
         );
-      }
-
-      if (pass.value.length < 3 || pass.value.length.length > 12) {
-        this.displayError(
-          pass,
-          "O campo senha precisa ter entre 3 e 12 caracteres."
-        );
-        flag = false;
-      }
-
-      if (!pass.value.match(/^[a-zA-Z0-9]+$/g)) {
-        let msg = `'O campo senha precisar conter apenas letras e/ou números.'`;
-        this.displayError(pass, msg);
-        flag = false;
-      }
+      } 
       return flag;
     }
   }
