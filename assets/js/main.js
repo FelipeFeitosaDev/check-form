@@ -41,24 +41,34 @@
           console.log(label);
           this.displayError(field, msg);
         } else if (field.classList.contains("name")) {
-          if (!field.value.match(/^[a-zA-Z]+$/g)) flag = false;
+          if (!this.checkName(field)) flag = false;
+
         } else if (field.classList.contains("user")) {
-          if (!this.validUser(field)) flag = false;
+          if (!this.checkUser(field)) flag = false;
+
         } else if (field.classList.contains("id")) {
-          if (!this.validId(field)) flag = false;
+          if (!this.checkId(field)) flag = false;
           this.displayError(field, "CPF inválido");
-        } else if (field.classList.contains("name")) {
-          if (!field.value.match(/^[a-zA-Z]+$/g)) flag = false;
-        } else if (field.classList.contains("user")) {
-          if (!this.validUser(field)) flag = false;
-        } else if (field.classList.contains("id")) {
-          if (!this.validId(field)) flag = false;
-        }
+        } 
       }
       return flag;
     }
 
-    validUser(field) {
+    checkName(field){
+        let flag = true;
+        if (!field.value.match(/^[\sa-zA-Z]+$/g)) {
+            this.displayError(field, 'Não pode haver caracteres especiais')
+            flag = false;
+        }
+        if(!field.value.includes(' ')){
+            this.displayError(field,'Precisa ter um sobrenome');
+            flag = false
+        }
+
+        return flag
+
+    }
+    checkUser(field) {
       let valid = true; //flag
       const user = field.value;
 
@@ -79,7 +89,7 @@
       return valid;
     }
 
-    validId(field) {
+    checkId(field) {
       const id = new ValidaCPF(field.value);
       return id.valida();
     }
