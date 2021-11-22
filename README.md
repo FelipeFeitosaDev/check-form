@@ -12,12 +12,12 @@ A form with verification conditions using class
 
 ## Features
 
-=> Function that creates an error and returns below the field
-         => Function that removes previous errors
-     => Function that validates User
-     => Function that validates password
-     => Function that returns validation of the validaCpf(external script) class
-     => Function that alerts when valid form has been submitted
+- Function that creates an error and returns below the field
+-- Function that removes previous errors
+-  Function that validates User
+- Function that validates password
+- Function that returns validation of the validaCpf(external script) class
+- Function that alerts when valid form has been submitted
 
 ## How to use
 
