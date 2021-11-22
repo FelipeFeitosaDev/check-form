@@ -1,6 +1,6 @@
 # check-form
 
-
+<img align="center" width="60%" margin-bottom="80px" src="https://raw.githubusercontent.com/FelipeFeitosaDev/validate-id/master/assets/img/mockup_window.png" style="max-width:100%;">
 
 A form with verification conditions using class
 ## Technologies Used
