@@ -1,7 +1,8 @@
 # check-form
-A form with verification conditions using class
-<img align="center" width="60%" margin-bottom="80px" src="https://github.com/FelipeFeitosaDev/check-form/blob/master/assets/img/check-form.png" style="max-width:100%;">
 
+<img width="60%" margin-bottom="80px" src="https://github.com/FelipeFeitosaDev/check-form/blob/master/assets/img/check-form.png" style="max-width:100%;">
+
+A form with verification conditions using class
 ## Technologies Used
 
 * HTML5
